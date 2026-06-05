@@ -1,4 +1,4 @@
-/* Importando fontes modernas estilo Cyberpunk / Gaming */
+/* Importando fontes modernas Cyberpunk */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap');
 
 :root {
@@ -14,11 +14,7 @@
     --menu-border: #252538;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--bg-dark);
@@ -31,39 +27,15 @@ body {
     overflow-x: hidden;
 }
 
-.gamer-container {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.gamer-container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
 
-/* ================= LINKS GLOBAIS ================= */
-a {
-    color: var(--neon-cyan);
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
+a { color: var(--neon-cyan); text-decoration: none; transition: all 0.2s ease; }
+a:hover { color: var(--neon-pink); text-shadow: 0 0 8px rgba(255, 0, 85, 0.6); }
 
-a:hover {
-    color: var(--neon-pink);
-    text-shadow: 0 0 8px rgba(255, 0, 85, 0.6);
-}
-
-.post-body a, .gamer-content a {
-    color: var(--neon-cyan) !important;
-    font-weight: 600;
-    border-bottom: 1px dashed var(--neon-cyan);
-}
-
-.post-body a:hover, .gamer-content a:hover {
-    color: var(--neon-pink) !important;
-    border-bottom-color: var(--neon-pink);
-}
-
-/* ================= CABEÇALHO GAMER E LOGO 100% VISÍVEL ================= */
+/* ================= CABEÇALHO E LOGO ANTI-CORTE ================= */
 .gamer-header {
     text-align: center;
-    padding: 10px 15px; /* Reduzido para evitar corte da logo em cima e embaixo */
+    padding: 10px 15px;
     margin-top: 25px;
     background-color: var(--surface-dark);
     border: 1px solid #1f1f2e;
@@ -71,307 +43,170 @@ a:hover {
     border-radius: 12px 12px 0 0;
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
 }
 
 .header-glow-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
+    position: absolute; top: 0; left: 0; width: 100%; height: 2px;
     background: linear-gradient(90deg, transparent, var(--neon-pink), var(--neon-cyan), transparent);
 }
 
-/* Força os contêineres do Blogger a não esconderem a imagem (overflow visible) */
-.gamer-header .header-section, .gamer-header .Header, .gamer-header .widget-content {
-    width: 100%;
-    max-width: 100%;
+/* MARRETA CSS: Destruindo limitações de corte do Blogger no cabeçalho */
+.gamer-header *, .gamer-header .header-section, .gamer-header .widget, .gamer-header .widget-content {
     height: auto !important;
+    max-height: none !important;
     overflow: visible !important;
 }
 
-.gamer-header h1, .gamer-header .title {
-    font-family: 'Orbitron', sans-serif;
-    color: #fff;
-    font-size: 3.2rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    text-shadow: 0 0 15px rgba(0, 240, 255, 0.6), 0 0 30px rgba(0, 240, 255, 0.2);
-    margin: 15px 0;
+.gamer-header h1 {
+    font-family: 'Orbitron', sans-serif; color: #fff; font-size: 3.2rem;
+    font-weight: 900; text-transform: uppercase; letter-spacing: 4px;
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); margin: 15px 0;
 }
 
-/* Regra absoluta para a Logo: Nunca cortar, sempre caber na tela */
 .gamer-header img {
     width: auto !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: 220px !important;
+    max-height: none !important; /* Libera qualquer limite vertical */
     object-fit: contain !important;
-    display: block;
-    margin: 0 auto;
-    padding: 10px 0; /* Dá um respiro para a logo */
+    display: block !important;
+    margin: 0 auto !important;
 }
 
 /* ================= MENU HORIZONTAL COMPACTO ================= */
 .gamer-nav {
     background-color: var(--surface-dark);
-    border: 1px solid #1f1f2e;
-    border-top: none;
-    margin-bottom: 35px;
-    border-radius: 0 0 12px 12px;
-    padding: 8px; /* Reduzido o padding geral do menu */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    border: 1px solid #1f1f2e; border-top: none;
+    margin-bottom: 35px; border-radius: 0 0 12px 12px;
+    padding: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
-.gamer-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 6px; /* Distância menor entre os botões */
-    flex-wrap: wrap; /* Permite quebrar linha só se a tela for muito pequena */
-}
+.gamer-nav ul { list-style: none; display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; }
 
 .gamer-nav a {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--text-light);
-    font-size: 0.85rem; /* Fonte menor para caberem mais itens */
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 8px 15px; /* Botões mais enxutos */
-    background-color: var(--menu-bg);
-    border: 2px solid var(--menu-border);
-    border-radius: 5px;
-    display: inline-block;
-    letter-spacing: 1px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Orbitron', sans-serif; color: var(--text-light);
+    font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+    padding: 8px 15px; background-color: var(--menu-bg);
+    border: 2px solid var(--menu-border); border-radius: 5px;
+    display: inline-block; letter-spacing: 1px;
     border-bottom: 2px solid var(--menu-border);
 }
 
 .gamer-nav a:hover {
-    color: #000;
-    background-color: var(--neon-cyan);
-    border-color: var(--neon-cyan);
-    border-bottom: 2px solid #00b0c0;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5), inset 0 0 5px rgba(255,255,255,0.4);
+    color: #000; background-color: var(--neon-cyan); border-color: var(--neon-cyan);
+    border-bottom: 2px solid #00b0c0; box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
     transform: translateY(-2px);
 }
 
-.gamer-nav a:active {
-    transform: translateY(1px);
-    background-color: var(--neon-pink);
-    border-color: var(--neon-pink);
-    border-bottom: 2px solid #c00040;
-    box-shadow: 0 0 10px rgba(255, 0, 85, 0.7);
-    color: #fff;
-}
-
-/* ================= LAYOUT E POSTAGENS ================= */
-.gamer-main-wrapper {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.gamer-content {
-    flex: 3;
-    min-width: 0;
-}
+/* ================= LAYOUT FLEX PARA EMPURRAR RODAPÉ ================= */
+.gamer-main-wrapper { display: flex; gap: 30px; margin-bottom: 40px; }
+.gamer-content { flex: 3; min-width: 0; }
 
 .post {
     background-color: var(--surface-card);
-    padding: 35px;
-    border-radius: 8px;
-    border: 1px solid #1f1f2e;
-    border-left: 5px solid var(--neon-pink);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    margin-bottom: 30px;
+    padding: 35px; border-radius: 8px;
+    border: 1px solid #1f1f2e; border-left: 5px solid var(--neon-pink);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-bottom: 30px;
+    display: flex; flex-direction: column; /* Transforma a postagem num funil perfeito */
 }
 
-.post-title, .post h3 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--neon-cyan);
-    font-size: 2.1rem;
-    font-weight: 700;
-    margin-bottom: 10px;
+/* Forçando a ordem dos elementos via Flexbox sem mexer no HTML/JS */
+.post > * { order: 3; } /* Tudo por padrão vai pro meio */
+.post-title, .post h3 { order: 1 !important; font-family: 'Orbitron', sans-serif; color: var(--neon-cyan); font-size: 2.1rem; margin-bottom: 10px; }
+.post-header-meta, .post-header { order: 2 !important; margin-bottom: 20px; color: var(--text-muted); }
+.post-body { order: 3 !important; font-size: 1.1rem; color: #cbd5e1; }
+
+/* ================= ÍCONES DE COMPARTILHAMENTO - FORÇAR HORIZONTAL ================= */
+/* Garantimos que a base de rodapé e botões desçam para o fim do Flexbox */
+.post-footer, .post-bottom, .share-buttons, .post-share-buttons {
+    order: 4 !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+    clear: both !important;
+    padding-top: 15px !important;
 }
 
-.post-header-meta {
-    margin-bottom: 20px;
-    color: var(--text-muted);
-}
+.share-buttons { border-top: 1px dashed var(--menu-border); }
 
-.post-body {
-    font-size: 1.1rem;
-    color: #cbd5e1;
-}
+/* Esconde o "botão âncora" do Blogger para abrir o menu */
+.share-buttons .share-button { display: none !important; }
 
-/* ================= RODAPÉ FORÇADO E ÍCONES MINIATURA ================= */
-.gamer-bottom-wrapper {
-    margin-top: 30px;
-    padding-top: 25px;
-    border-top: 2px dashed #1f1f2e;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    clear: both;
-}
-
-/* Botão "Leia Mais" */
-.jump-link {
-    text-align: right;
-    margin: 0 !important;
-}
-
-.jump-link a {
-    display: inline-block;
-    background-color: var(--surface-dark);
-    color: var(--neon-cyan) !important;
-    border: 2px solid var(--neon-cyan);
-    padding: 8px 20px;
-    border-radius: 6px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border-bottom: none; 
-}
-
-.jump-link a:hover {
-    background-color: var(--neon-cyan);
-    color: #000 !important;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-}
-
-/* COMPARTILHAMENTO: Lista em Linha */
-.share-buttons {
+/* A lista de botões (que estava em cascata) agora vira uma linha na horizontal */
+.share-buttons-options, .post-share-buttons {
     display: flex !important;
-    flex-direction: column !important;
-    gap: 10px;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.share-buttons .share-button {
-    display: none !important; 
-}
-
-.share-buttons-options {
-    display: flex !important;
-    flex-direction: row !important;
+    flex-direction: row !important; /* HORIZONTAL FORÇADO */
     flex-wrap: wrap !important;
-    gap: 8px;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    position: static !important; /* Desabilita o drop-down nativo */
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
     list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.share-buttons-options li {
     margin: 0 !important;
     padding: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border: none !important;
 }
 
-.share-buttons-options li a, .share-buttons-options li span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background-color: var(--menu-bg);
-    border: 1px solid var(--menu-border);
-    padding: 6px 12px;
-    border-radius: 5px;
-    color: var(--text-muted) !important;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
+/* Transforma os botões da lista (Facebook, Twitter, etc) em botões Gamers */
+.share-buttons-options li, .post-share-buttons li {
+    display: inline-flex !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+}
+
+.share-buttons-options li a, .share-buttons-options li span, 
+.post-share-buttons li a, .post-share-buttons li span {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background-color: var(--surface-dark) !important;
+    border: 1px solid var(--neon-cyan) !important;
+    padding: 6px 12px !important;
+    border-radius: 5px !important;
+    color: var(--text-light) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    pointer-events: auto !important; /* GARANTE QUE CLIQUE FUNCIONE */
     text-decoration: none !important;
-    border-bottom: none !important;
+    transition: all 0.2s ease !important;
 }
 
-.share-buttons-options li a:hover {
-    color: var(--neon-pink) !important;
-    border-color: var(--neon-pink);
-    box-shadow: inset 0 0 10px rgba(255, 0, 85, 0.2);
+.share-buttons-options li a:hover, .share-buttons-options li span:hover,
+.post-share-buttons li a:hover, .post-share-buttons li span:hover {
+    color: #000 !important;
+    background-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5) !important;
 }
 
-/* REGRA DE FERRO: Ícones minúsculos e fixos no Rodapé Forçado */
-.gamer-bottom-wrapper svg,
-.gamer-bottom-wrapper img,
-.share-buttons-options svg,
-.share-buttons-options img {
-    width: 18px !important;
-    height: 18px !important;
-    min-width: 18px !important;
-    min-height: 18px !important;
-    max-width: 18px !important;
-    max-height: 18px !important;
-    display: inline-block !important;
-    object-fit: contain !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    fill: currentColor !important;
+/* Tamanho engessado e imutável para os vetores (18px) */
+.share-buttons-options svg, .share-buttons-options img,
+.post-share-buttons svg, .post-share-buttons img {
+    width: 16px !important; height: 16px !important;
+    min-width: 16px !important; min-height: 16px !important;
+    max-width: 16px !important; max-height: 16px !important;
+    display: block !important;
+    fill: currentColor !important; /* Pega a cor do texto do botão */
 }
 
 /* ================= SIDEBAR E RODAPÉ DA PÁGINA ================= */
-.gamer-sidebar {
-    flex: 1;
-    min-width: 280px;
-}
-
-.gamer-sidebar .widget {
-    background-color: var(--surface-card);
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid #1f1f2e;
-    border-right: 5px solid var(--neon-cyan);
-    margin-bottom: 30px;
-}
-
-.gamer-sidebar h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--neon-cyan);
-    font-size: 1.35rem;
-    border-bottom: 2px solid #252535;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-}
-
-.gamer-footer-widgets {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    background-color: var(--surface-dark);
-    padding: 45px 30px;
-    border-top: 3px solid var(--neon-purple);
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.gamer-copyright {
-    text-align: center;
-    padding: 25px 15px 50px 15px;
-    color: var(--text-muted);
-    font-family: 'Orbitron', sans-serif;
-}
+.gamer-sidebar { flex: 1; min-width: 280px; }
+.gamer-sidebar .widget { background-color: var(--surface-card); padding: 25px; border-radius: 8px; border: 1px solid #1f1f2e; border-right: 5px solid var(--neon-cyan); margin-bottom: 30px; }
+.gamer-sidebar h2 { font-family: 'Orbitron', sans-serif; color: var(--neon-cyan); font-size: 1.35rem; border-bottom: 2px solid #252535; padding-bottom: 12px; margin-bottom: 20px; }
+.gamer-footer-widgets { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; background-color: var(--surface-dark); padding: 45px 30px; border-top: 3px solid var(--neon-purple); border-radius: 10px; margin-bottom: 20px; }
+.gamer-copyright { text-align: center; padding: 25px 15px 50px 15px; color: var(--text-muted); font-family: 'Orbitron', sans-serif; }
 
 /* ================= RESPONSIVO ================= */
-@media (max-width: 992px) {
-    .gamer-main-wrapper { flex-direction: column; }
-    .gamer-sidebar { width: 100%; }
-}
+@media (max-width: 992px) { .gamer-main-wrapper { flex-direction: column; } .gamer-sidebar { width: 100%; } }
 @media (max-width: 768px) {
-    .gamer-header h1 { font-size: 2.1rem; }
-    .gamer-nav ul { gap: 4px; }
     .gamer-nav a { width: 100%; text-align: center; padding: 10px; }
     .post { padding: 20px; }
-    .share-buttons-options { justify-content: center; }
-    .jump-link { text-align: center; }
+    .share-buttons-options { justify-content: center !important; }
 }
