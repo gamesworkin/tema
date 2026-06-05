@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <title><data:view.title.escaped/></title>
+  <b:include data='blog' name='all-head-content'/>
+
+  <link href='https://gamesworkin.github.io/tema/style-v7.css' rel='stylesheet' type='text/css'/>
+
+  <b:skin><![CDATA[ /* CSS Gamer v7 - Estabilizado */ ]]></b:skin>
+</head>
+<body>
+  <div class='gamer-container'>
+    
+    <header class='gamer-header'>
+      <div class='header-glow-line'></div>
+      <b:section class='header-section' id='header' maxwidgets='1' showaddelement='no'>
+        <b:widget id='Header1' locked='true' title='Games Workin' type='Header' version='2'/>
+      </b:section>
+    </header>
+
+    <nav class='gamer-nav'>
+      <b:section class='menu-section' id='menu' maxwidgets='1' showaddelement='yes'>
+        <b:widget id='PageList1' locked='false' title='Menu Principal' type='PageList' version='2'/>
+      </b:section>
+    </nav>
+
+    <div class='gamer-main-wrapper'>
+      <main class='gamer-content'>
+        <b:section class='main-section' id='main' showaddelement='no'>
+          <b:widget id='Blog1' locked='true' title='Postagens' type='Blog' version='2'/>
+        </b:section>
+      </main>
+
+      <aside class='gamer-sidebar'>
+        <b:section class='sidebar-section' id='sidebar' showaddelement='yes'>
+          <b:widget id='PopularPosts1' locked='false' title='Populares' type='PopularPosts' version='2'/>
+        </b:section>
+      </aside>
+    </div>
+
+    <footer class='gamer-footer-widgets'>
+      <b:section class='footer-section' id='footer' showaddelement='yes'>
+        <b:widget id='Text1' locked='false' title='Sobre' type='Text' version='2'/>
+      </b:section>
+    </footer>
+
+    <div class='gamer-copyright'>
+      <p>Games Workin 2026. Todos os direitos reservados.</p>
+    </div>
+    
+  </div>
+
+  <script src='https://gamesworkin.github.io/tema/script.js'></script>
+</body>
+</html>
