@@ -63,7 +63,7 @@ a:hover {
 /* ================= CABEÇALHO GAMER E CORREÇÃO DE LOGO ================= */
 .gamer-header {
     text-align: center;
-    padding: 25px 20px; /* Reduzido para dar espaço à logo */
+    padding: 25px 20px;
     margin-top: 25px;
     background-color: var(--surface-dark);
     border: 1px solid #1f1f2e;
@@ -97,7 +97,6 @@ a:hover {
     text-shadow: 0 0 15px rgba(0, 240, 255, 0.6), 0 0 30px rgba(0, 240, 255, 0.2);
 }
 
-/* CORREÇÃO: Impedir que a Logo seja cortada */
 .gamer-header .header-section, .gamer-header .Header {
     width: 100%;
     max-width: 100%;
@@ -106,7 +105,7 @@ a:hover {
 .gamer-header img {
     max-width: 100% !important;
     height: auto !important;
-    max-height: 250px; /* Garante que a logo não fique gigante no mobile */
+    max-height: 250px;
     object-fit: contain;
     display: block;
     margin: 0 auto;
@@ -185,8 +184,6 @@ a:hover {
     border-left: 5px solid var(--neon-pink);
     box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
 }
 
 .post-title, .post h3 {
@@ -194,67 +191,125 @@ a:hover {
     color: var(--neon-cyan);
     font-size: 2.1rem;
     font-weight: 700;
-    margin-bottom: 20px;
-    order: 1;
+    margin-bottom: 10px;
 }
 
 .post-header-meta {
-    order: 2;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: var(--text-muted);
 }
 
 .post-body {
-    order: 3;
-    margin-bottom: 25px;
     font-size: 1.1rem;
     color: #cbd5e1;
 }
 
-/* ================= CORREÇÃO DOS ÍCONES GIGANTES (SHARE/LINKS) ================= */
-.post-footer, .post-share-buttons, .share-buttons, .feed-links {
-    order: 4 !important; 
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #252535;
-    width: 100%;
-}
-
-.post-share-buttons {
+/* ================= NOVO RODAPÉ FORÇADO (Leia Mais + Compartilhar) ================= */
+.gamer-bottom-wrapper {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 2px dashed #1f1f2e;
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    align-items: center;
-    list-style: none !important;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    clear: both;
 }
 
-.post-share-buttons li, .share-buttons li {
-    list-style: none !important;
-    margin: 0;
-    padding: 0;
+/* BOTÃO "LEIA MAIS" MODERNO */
+.jump-link {
+    text-align: right;
+    margin: 0 !important;
 }
 
-/* Forçando o SVG/Imagens do Blogger a ficarem pequenos */
-.post-share-buttons svg, .share-buttons svg, .feed-links svg,
-.post-share-buttons img, .share-buttons img, .feed-links img {
-    width: 28px !important;
-    height: 28px !important;
-    max-width: 28px !important;
-    max-height: 28px !important;
-    display: inline-block !important;
-    fill: var(--neon-cyan); /* Se for SVG, pega a cor ciano */
+.jump-link a {
+    display: inline-block;
+    background-color: var(--surface-dark);
+    color: var(--neon-cyan) !important;
+    border: 2px solid var(--neon-cyan);
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
+    border-bottom: none; /* remove sublinhado padrao */
 }
 
-/* Efeito Gamer nos botões de compartilhar */
-.post-share-buttons svg:hover, .share-buttons svg:hover,
-.post-share-buttons img:hover, .share-buttons img:hover {
-    fill: var(--neon-pink);
-    transform: scale(1.2);
-    filter: drop-shadow(0 0 5px var(--neon-pink));
+.jump-link a:hover {
+    background-color: var(--neon-cyan);
+    color: #000 !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+    border-bottom-color: transparent;
 }
 
-/* ================= SIDEBAR E RODAPÉ ================= */
+/* ================= TRANSFORMAR COMPARTILHAMENTO EM BARRA HORIZONTAL ================= */
+.share-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Oculta o ícone principal que servia de "botão para abrir", pois vamos mostrar as opções abertas */
+.share-buttons .share-button {
+    display: none !important; 
+}
+
+/* Lista horizontal de redes sociais */
+.share-buttons-options {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 12px;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 1 !important; 
+    visibility: visible !important;
+}
+
+.share-buttons-options li {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+/* Botões Gamers de Rede Social */
+.share-buttons-options li a, .share-buttons-options li span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--menu-bg);
+    border: 1px solid var(--menu-border);
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: var(--text-muted) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+.share-buttons-options li a:hover {
+    color: var(--neon-pink) !important;
+    border-color: var(--neon-pink);
+    box-shadow: inset 0 0 10px rgba(255, 0, 85, 0.2);
+    transform: translateY(-2px);
+}
+
+.share-buttons-options svg {
+    width: 18px !important;
+    height: 18px !important;
+    fill: currentColor !important;
+    transition: fill 0.3s ease;
+}
+
+/* ================= SIDEBAR E RODAPÉ DA PÁGINA ================= */
 .gamer-sidebar {
     flex: 1;
     min-width: 280px;
@@ -306,4 +361,6 @@ a:hover {
     .gamer-nav ul { flex-direction: column; width: 100%; }
     .gamer-nav a { width: 100%; text-align: center; padding: 14px; }
     .post { padding: 20px; }
+    .share-buttons-options { justify-content: center; }
+    .jump-link { text-align: center; }
 }
