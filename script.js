@@ -1,9 +1,9 @@
 /**
- * Games Workin Theme JS - Versão 4.0
- * Engine de Layout Forçado: Corrige o bug do Blogger de misturar Rodapé com Cabeçalho
+ * Games Workin Theme JS - Versão 5.0
+ * Correção agressiva de tamanho de vetores e realocação de rodapé
  */
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("🎮 [Games Workin v4.0] Sistema de ancoragem de rodapé ativado.");
+    console.log("🎮 [Games Workin v5.0] Otimização de Menu e Correção de Ícones ativada.");
 
     // Efeito de rolagem do Cabeçalho
     const header = document.querySelector('.gamer-header');
@@ -17,38 +17,43 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // SISTEMA DE CORREÇÃO DO BLOGGER:
-    // Pega todas as postagens na página e move os elementos de rodapé (Compartilhar, Leia Mais)
-    // obrigatoriamente para DEBAIXO do conteúdo do texto.
+    // SISTEMA DE CORREÇÃO DO BLOGGER: Realocação e Limpeza de Ícones
     const posts = document.querySelectorAll('.post');
     
     posts.forEach(post => {
         const postBody = post.querySelector('.post-body');
-        if (!postBody) return; // Se não houver corpo da postagem, ignora
+        if (!postBody) return;
 
-        // Cria o contêiner de rodapé forçado caso não exista
         let bottomWrapper = post.querySelector('.gamer-bottom-wrapper');
         if (!bottomWrapper) {
             bottomWrapper = document.createElement('div');
             bottomWrapper.className = 'gamer-bottom-wrapper';
-            // Insere o contêiner imediatamente após o corpo do texto
             postBody.parentNode.insertBefore(bottomWrapper, postBody.nextSibling);
         }
 
-        // Mapeia todos os widgets que o Blogger teima em jogar pra cima
         const elementsToMoveDown = [
-            post.querySelector('.jump-link'),        // Botão "Leia mais"
-            post.querySelector('.share-buttons'),    // Menu novo de Compartilhamento
-            post.querySelector('.post-share-buttons'), // Menu antigo de Compartilhamento
-            post.querySelector('.post-labels'),      // Marcadores (Tags)
-            post.querySelector('.post-footer')       // Rodapé padrão
+            post.querySelector('.jump-link'),
+            post.querySelector('.share-buttons'),
+            post.querySelector('.post-share-buttons'),
+            post.querySelector('.post-labels'),
+            post.querySelector('.post-footer')
         ];
 
-        // Se o elemento existir na postagem, move ele para dentro do novo Rodapé Forçado
         elementsToMoveDown.forEach(el => {
             if (el) {
                 bottomWrapper.appendChild(el);
             }
+        });
+
+        // LIMPEZA AGRESSIVA DE ÍCONES:
+        // O Blogger injeta tamanhos inline (<svg width="100%" height="100%">) que quebram o layout.
+        // Vamos varrer todos os svgs/imgs no rodapé e arrancar esses atributos.
+        const icons = bottomWrapper.querySelectorAll('svg, img');
+        icons.forEach(icon => {
+            icon.removeAttribute('width');
+            icon.removeAttribute('height');
+            icon.style.width = '18px';
+            icon.style.height = '18px';
         });
     });
 });
