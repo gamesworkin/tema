@@ -37,7 +37,7 @@ body {
     padding: 0 20px;
 }
 
-/* ================= CORREÇÃO GLOBAL DE LINKS (Alta Visibilidade) ================= */
+/* ================= LINKS GLOBAIS ================= */
 a {
     color: var(--neon-cyan);
     text-decoration: none;
@@ -49,7 +49,6 @@ a:hover {
     text-shadow: 0 0 8px rgba(255, 0, 85, 0.6);
 }
 
-/* Links dentro das postagens do Blogger */
 .post-body a, .gamer-content a {
     color: var(--neon-cyan) !important;
     font-weight: 600;
@@ -59,13 +58,12 @@ a:hover {
 .post-body a:hover, .gamer-content a:hover {
     color: var(--neon-pink) !important;
     border-bottom-color: var(--neon-pink);
-    text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
 }
 
-/* ================= Cabeçalho Gamer Profissional ================= */
+/* ================= CABEÇALHO GAMER E CORREÇÃO DE LOGO ================= */
 .gamer-header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 25px 20px; /* Reduzido para dar espaço à logo */
     margin-top: 25px;
     background-color: var(--surface-dark);
     border: 1px solid #1f1f2e;
@@ -73,6 +71,11 @@ a:hover {
     border-radius: 12px 12px 0 0;
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .header-glow-line {
@@ -94,7 +97,22 @@ a:hover {
     text-shadow: 0 0 15px rgba(0, 240, 255, 0.6), 0 0 30px rgba(0, 240, 255, 0.2);
 }
 
-/* ================= Menu Horizontal Reformulado ================= */
+/* CORREÇÃO: Impedir que a Logo seja cortada */
+.gamer-header .header-section, .gamer-header .Header {
+    width: 100%;
+    max-width: 100%;
+}
+
+.gamer-header img {
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: 250px; /* Garante que a logo não fique gigante no mobile */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ================= MENU HORIZONTAL ================= */
 .gamer-nav {
     background-color: var(--surface-dark);
     border: 1px solid #1f1f2e;
@@ -125,12 +143,10 @@ a:hover {
     border-radius: 6px;
     display: inline-block;
     letter-spacing: 1px;
-    position: relative;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
     border-bottom: 3px solid var(--menu-border);
 }
 
-/* Efeito ao Passar o Mouse (Hover) */
 .gamer-nav a:hover {
     color: #000;
     background-color: var(--neon-cyan);
@@ -138,10 +154,8 @@ a:hover {
     border-bottom: 3px solid #00b0c0;
     box-shadow: 0 0 20px rgba(0, 240, 255, 0.5), inset 0 0 5px rgba(255,255,255,0.4);
     transform: translateY(-3px);
-    text-shadow: none;
 }
 
-/* Efeito ao Clicar (Active) */
 .gamer-nav a:active {
     transform: translateY(1px);
     background-color: var(--neon-pink);
@@ -151,7 +165,7 @@ a:hover {
     color: #fff;
 }
 
-/* ================= Layout das Postagens e Correções ================= */
+/* ================= LAYOUT E POSTAGENS ================= */
 .gamer-main-wrapper {
     display: flex;
     gap: 30px;
@@ -160,10 +174,9 @@ a:hover {
 
 .gamer-content {
     flex: 3;
-    min-width: 0; /* Previne quebras em elementos flex */
+    min-width: 0;
 }
 
-/* Elemento de Postagem Individual do Blogger */
 .post {
     background-color: var(--surface-card);
     padding: 35px;
@@ -173,57 +186,75 @@ a:hover {
     box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     margin-bottom: 30px;
     display: flex;
-    flex-direction: column; /* Força ordem vertical estrita dos elementos */
+    flex-direction: column;
 }
 
-/* CORREÇÃO DO ERRO: Forçando cabeçalhos, títulos e mídias ficarem no topo e feeds/redes no rodapé */
 .post-title, .post h3 {
     font-family: 'Orbitron', sans-serif;
     color: var(--neon-cyan);
     font-size: 2.1rem;
     font-weight: 700;
     margin-bottom: 20px;
-    order: 1; /* Garante o título no topo */
+    order: 1;
 }
 
 .post-header-meta {
     order: 2;
     margin-bottom: 15px;
     color: var(--text-muted);
-    font-size: 0.9rem;
 }
 
 .post-body {
-    order: 3; /* Conteúdo no meio */
+    order: 3;
     margin-bottom: 25px;
     font-size: 1.1rem;
     color: #cbd5e1;
 }
 
-/* Move botões de compartilhamento, feeds e labels obrigatoriamente para baixo */
-.post-footer, .post-share-buttons, .share-buttons, .feed-links, .post-labels {
+/* ================= CORREÇÃO DOS ÍCONES GIGANTES (SHARE/LINKS) ================= */
+.post-footer, .post-share-buttons, .share-buttons, .feed-links {
     order: 4 !important; 
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 15px;
+    padding-top: 15px;
     border-top: 1px solid #252535;
+    width: 100%;
 }
 
-/* Estilização Gamer para botões de Redes Sociais e Compartilhamento */
 .post-share-buttons {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     flex-wrap: wrap;
+    align-items: center;
+    list-style: none !important;
 }
 
-.feed-links {
-    text-align: center;
-    clear: both;
-    padding: 15px;
-    background: rgba(0,0,0,0.3);
-    border-radius: 4px;
+.post-share-buttons li, .share-buttons li {
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
 }
 
-/* ================= Sidebar Direita Gamer ================= */
+/* Forçando o SVG/Imagens do Blogger a ficarem pequenos */
+.post-share-buttons svg, .share-buttons svg, .feed-links svg,
+.post-share-buttons img, .share-buttons img, .feed-links img {
+    width: 28px !important;
+    height: 28px !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
+    display: inline-block !important;
+    fill: var(--neon-cyan); /* Se for SVG, pega a cor ciano */
+    transition: all 0.3s ease;
+}
+
+/* Efeito Gamer nos botões de compartilhar */
+.post-share-buttons svg:hover, .share-buttons svg:hover,
+.post-share-buttons img:hover, .share-buttons img:hover {
+    fill: var(--neon-pink);
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 5px var(--neon-pink));
+}
+
+/* ================= SIDEBAR E RODAPÉ ================= */
 .gamer-sidebar {
     flex: 1;
     min-width: 280px;
@@ -235,98 +266,44 @@ a:hover {
     border-radius: 8px;
     border: 1px solid #1f1f2e;
     border-right: 5px solid var(--neon-cyan);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     margin-bottom: 30px;
 }
 
-.gamer-sidebar h2, .gamer-sidebar .title {
+.gamer-sidebar h2 {
     font-family: 'Orbitron', sans-serif;
     color: var(--neon-cyan);
     font-size: 1.35rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     border-bottom: 2px solid #252535;
     padding-bottom: 12px;
     margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
 }
 
-/* Links em listas na sidebar */
-.gamer-sidebar ul {
-    list-style: none;
-}
-
-.gamer-sidebar li {
-    padding: 10px 0;
-    border-bottom: 1px solid #181824;
-}
-
-/* ================= Rodapé de Widgets Gamer ================= */
 .gamer-footer-widgets {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     background-color: var(--surface-dark);
     padding: 45px 30px;
-    border: 1px solid #1f1f2e;
     border-top: 3px solid var(--neon-purple);
     border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
 }
 
-.gamer-footer-widgets h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--neon-purple);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(157, 0, 255, 0.4);
-}
-
-/* ================= Copyright Estilizado ================= */
 .gamer-copyright {
     text-align: center;
     padding: 25px 15px 50px 15px;
     color: var(--text-muted);
     font-family: 'Orbitron', sans-serif;
-    font-weight: 500;
-    font-size: 0.95rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
 }
 
-/* ================= Responsividade Mobile Sólida ================= */
+/* ================= RESPONSIVO ================= */
 @media (max-width: 992px) {
-    .gamer-main-wrapper {
-        flex-direction: column;
-    }
-    .gamer-sidebar {
-        width: 100%;
-    }
+    .gamer-main-wrapper { flex-direction: column; }
+    .gamer-sidebar { width: 100%; }
 }
-
 @media (max-width: 768px) {
-    .gamer-header {
-        padding: 40px 15px;
-    }
-    .gamer-header h1 {
-        font-size: 2.1rem;
-        letter-spacing: 2px;
-    }
-    .gamer-nav ul {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
-    }
-    .gamer-nav a {
-        width: 100%;
-        text-align: center;
-        padding: 14px;
-    }
-    .post {
-        padding: 20px;
-    }
-    .post-title, .post h3 {
-        font-size: 1.6rem;
-    }
+    .gamer-header h1 { font-size: 2.1rem; }
+    .gamer-nav ul { flex-direction: column; width: 100%; }
+    .gamer-nav a { width: 100%; text-align: center; padding: 14px; }
+    .post { padding: 20px; }
 }
