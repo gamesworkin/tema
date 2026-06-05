@@ -1,11 +1,11 @@
 /**
- * Games Workin Theme JS - Versão 7.0
- * Realocação segura de botões de compartilhamento
+ * Games Workin Theme JS - Versão 7.1
+ * Realocação estável v7 + Ajuste dinâmico de mídias responsivas
  */
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("🎮 [Games Workin v7.0] Carregamento seguro de módulos.");
+    console.log("🎮 [Games Workin v7.1] Sistema estabilizado com imagens responsivas.");
 
-    // Efeito Neon do Cabeçalho
+    // Efeito Neon de Scroll do Cabeçalho
     const header = document.querySelector('.gamer-header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 60) {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Realocar botões de compartilhamento para o RODAPÉ da postagem
+    // Realocar botões de compartilhamento para debaixo do texto da postagem
     const posts = document.querySelectorAll('.post');
     
     posts.forEach(post => {
@@ -26,18 +26,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const jumpLink = post.querySelector('.jump-link');
 
         if (postBody) {
-            // Cria a área de rodapé forçado logo após o texto da postagem
             let bottomWrapper = post.querySelector('.gamer-bottom-wrapper');
             if (!bottomWrapper) {
                 bottomWrapper = document.createElement('div');
                 bottomWrapper.className = 'gamer-bottom-wrapper';
-                // Insere depois do post-body
                 postBody.parentNode.insertBefore(bottomWrapper, postBody.nextSibling);
             }
 
-            // Move os elementos para dentro do rodapé de forma segura (preserva cliques)
             if (shareBtns) bottomWrapper.appendChild(shareBtns);
             if (jumpLink) bottomWrapper.appendChild(jumpLink);
+
+            // CORREÇÃO AUXILIAR MOBILE: Proíbe larguras em píxeis fixos de quebrarem a proporção
+            const postImages = postBody.querySelectorAll('img');
+            postImages.forEach(img => {
+                img.removeAttribute('width');
+                img.removeAttribute('height');
+                img.style.width = '100%';
+                img.style.height = 'auto';
+            });
         }
     });
 });
